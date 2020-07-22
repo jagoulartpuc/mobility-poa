@@ -16,46 +16,46 @@ Primeiramente, a aplicação possui dois endpoints para inserir os dados das API
 # CRUDs de linha de ônibus:
 
 # POST /busline
--Insere uma linha de ônibus.
+- Insere uma linha de ônibus.
 
 # GET /busline
-params: objeto BusLine
--Retorna todas as linhas cadastradas no banco.
+- params: objeto BusLine
+- Retorna todas as linhas cadastradas no banco.
 
 # PUT /busline
-params: objeto BusLine
--Edita uma linha de ônibus
+- params: objeto BusLine
+- Edita uma linha de ônibus
 
 # DELETE /busline
-params: id
--Deleta uma linha de ônibus pelo id;
+- params: id
+- Deleta uma linha de ônibus pelo id;
 
 
 # CRUDs de Itinerário:
 
 # POST /itinerary
--Insere um itinerário.
+- Insere um itinerário.
 
 # GET /itinerary
-params: objeto Itinerary
--Retorna todos itinerários cadastrados no banco.
+- params: objeto Itinerary
+- Retorna todos itinerários cadastrados no banco.
 
 # PUT /itinerary
-params: objeto Itinerary
--Edita um itinerário
+- params: objeto Itinerary
+- Edita um itinerário
 
 # DELETE /itinerary
-params: idlinha
--Deleta um itinerário pelo id;
+- params: idlinha
+- Deleta um itinerário pelo id;
 
 
 # Demais funcionalidades:
 
 # GET /busline/per-name
-params: nome
--retorna a lista de linhas de ônibus filtradas por nome.
+- params: nome
+- retorna a lista de linhas de ônibus filtradas por nome.
 
 # GET /busline/close-lines
-params: latitude, longitude, raio
--retorna uma lista de linhas de ônibus dentro do raio de uma determinada coordenada de um ponto.
+- params: latitude, longitude, raio
+- retorna uma lista de linhas de ônibus dentro do raio de uma determinada coordenada de um ponto.
 
