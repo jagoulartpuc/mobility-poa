@@ -2,9 +2,8 @@ package com.dimed.mobility.controller;
 
 import com.dimed.mobility.domain.BusLine;
 import com.dimed.mobility.domain.Itinerary;
-import com.dimed.mobility.http.RestClient;
 import com.dimed.mobility.service.BusLineService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.dimed.mobility.service.ItineraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +14,10 @@ import java.util.List;
 public class BusLineController {
 
     @Autowired
-    private RestClient restClient;
+    private BusLineService busLineService;
 
     @Autowired
-    private BusLineService busLineService;
+    private ItineraryService itineraryService;
 
     @PostMapping
     public BusLine postBusLine(
@@ -29,7 +28,7 @@ public class BusLineController {
 
     @GetMapping("/add-all")
     public List<BusLine> addBusLinesFromClient() {
-        return busLineService.insertAll();
+        return busLineService.insertFromClient();
     }
 
     @GetMapping
@@ -46,11 +45,11 @@ public class BusLineController {
     }
 
     @PutMapping
-    public BusLine updateBusLine(
-            @RequestBody BusLine busLine
+   public BusLine updateBusLine(
+           @RequestBody BusLine busLine
     ) {
-        return busLineService.update(busLine);
-    }
+       return busLineService.update(busLine);
+   }
 
     @DeleteMapping
     public boolean deleteBusLine(
@@ -61,9 +60,13 @@ public class BusLineController {
         return true;
     }
 
-    @GetMapping("/itinerary")
-    public Itinerary getItinerary() throws JsonProcessingException {
-
-        return restClient.getItinerary("http://www.poatransporte.com.br/php/facades/process.php?a=il&p=5566");
+    @GetMapping("/close-lines")
+    public List<BusLine> getCloseLines(
+            @RequestParam String latitude,
+            @RequestParam String longitude,
+            @RequestParam String raio
+    ) {
+        return busLineService.getCloseLines(latitude, longitude, Double.parseDouble(raio), itineraryService.getAll());
     }
+
 }

@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.apache.httpcomponents:httpclient:4.5.2'
+	implementation 'com.google.code.gson:gson:2.8.6'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
